@@ -38,7 +38,7 @@ cmake \
 
 export LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
 
-export CTEST_BUILD_COMMAND="/usr/bin/make -j3 -i -k"
+export CTEST_BUILD_COMMAND="/usr/bin/ninja"
 
 ninja
 
