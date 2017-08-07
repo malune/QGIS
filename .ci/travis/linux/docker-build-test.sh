@@ -14,6 +14,7 @@ mkdir -p build-docker &&
 pushd build-docker
 
 cmake \
+ -GNinja \
  -DWITH_STAGED_PLUGINS=ON \
  -DWITH_GRASS=OFF \
  -DSUPPRESS_QT_WARNINGS=ON \
@@ -39,7 +40,7 @@ export LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
 
 export CTEST_BUILD_COMMAND="/usr/bin/make -j3 -i -k"
 
-/usr/bin/make -j3 -i -k
+ninja
 
 python3 /root/QGIS/.ci/travis/scripts/ctest2travis.py xvfb-run ctest -V -E "$(cat /root/QGIS/.ci/travis/linux/blacklist.txt | sed -r '/^(#.*?)?$/d' | paste -sd '|' -)" -S /root/QGIS/.ci/travis/travis.ctest
 
