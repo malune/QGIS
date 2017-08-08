@@ -14,6 +14,8 @@ ccache -z
 
 cd /root/QGIS
 
+sleep 20
+
 printf "[qgis_test]\nhost=postgres\nport=5432\ndbname=qgis_test\nuser=docker\npassword=docker" > ~/.pg_service.conf
 export PGUSER=docker
 export PGHOST=postgres
