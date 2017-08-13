@@ -1,7 +1,5 @@
 
-ARG DOCKER_TAG=latest
-
-FROM      qgis/qgis3-build-deps:$DOCKER_TAG
+FROM      qgis/qgis3-build-deps:current_build
 MAINTAINER Denis Rouzaud <denis.rouzaud@gmail.com>
 
 RUN ls /root/.ccache

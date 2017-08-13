@@ -21,7 +21,7 @@ docker --version
 #docker pull ubuntu:16.04
 docker pull "qgis/qgis3-build-deps:${DOCKER_TAG}" || true
 docker build --file Dockerfile-deps \
-             --cache-from "qgis/qgis3-build-deps:${DOCKER_TAG}"\
+             --cache-from "qgis/qgis3-build-deps:${DOCKER_TAG}" \
              --tag "qgis/qgis3-build-deps:${DOCKER_TAG}" .
 # image should be pushed even if QGIS build fails
 # but push is achieved only on branches (not for PRs)
@@ -30,5 +30,6 @@ if [[ $DOCKER_PUSH =~ true ]]; then
   #docker tag "qgis/qgis3-build-deps:${DOCKER_TAG}" "qgis/qgis3-build-deps:latest"
   docker push "qgis/qgis3-build-deps:${DOCKER_TAG}"
 fi
+docker tag "qgis/qgis3-build-deps:${DOCKER_TAG}" "qgis/qgis3-build-deps:current_build"
 
 popd
